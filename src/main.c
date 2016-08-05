@@ -28,8 +28,7 @@ uint8_t interruptFlag = 0;
 
 int main(void) {
 
-	__GPIOD_CLK_ENABLE()
-	;
+	__GPIOD_CLK_ENABLE();
 
 	GPIO_InitTypeDef GPIO_Init;
 
@@ -45,10 +44,11 @@ int main(void) {
 	Button_Init.Pin = KEY_BUTTON_PIN;
 	Button_Init.Pull = GPIO_NOPULL;
 	Button_Init.Speed = GPIO_SPEED_FAST;
-	Button_Init.Mode = GPIO_MODE_IT_RISING;
+	Button_Init.Mode = GPIO_MODE_IT_RISING;    // modo interrupcion
 	HAL_GPIO_Init(KEY_BUTTON_GPIO_PORT, &Button_Init);
 
 	/* Enable and set Button EXTI Interrupt to the lowest priority */
+	// configuracion de la interrupciones
 	HAL_NVIC_SetPriority(EXTI0_IRQn, 1, 0);
 	HAL_NVIC_EnableIRQ(EXTI0_IRQn);
 
