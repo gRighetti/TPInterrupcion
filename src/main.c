@@ -116,11 +116,10 @@ void delay(uint16_t delay) {
 
 void EXTI0_IRQHandler(void) {
 
-	if (__HAL_GPIO_EXTI_GET_FLAG(GPIO_PIN_0)) {
-		if (__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_0)) {
-			__HAL_GPIO_EXTI_CLEAR_FLAG(GPIO_PIN_0);
-			interruptFlag = 1;
-		}
+	if (__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_0)) {
+		__HAL_GPIO_EXTI_CLEAR_FLAG(GPIO_PIN_0);
+		interruptFlag = 1;
+
 	}
 }
 
